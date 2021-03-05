@@ -32,7 +32,7 @@ node* create(int postL, int postR, int inL, int inR){
 }
 
 
-int num; //已输出节点的个数
+int num = 0; //已输出节点的个数
 void BFS(node* root){
     queue<node*> q; //队列中存储的是地址
     q.push(root); //根结点地址入队
