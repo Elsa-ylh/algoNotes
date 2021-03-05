@@ -19,7 +19,7 @@ node* create(int postL, int postR, int inL, int inR){
     node* root = new node;  //创建一个新节点用来存放二叉树的根节点
     root -> data = post[postR]; //根节点的数据域为根节点的值
     int k;
-    for(k = inL; k < inR; k++){
+    for(k = inL; k <= inR; k++){
         if(in[k] == post[postR]){
             break;
         }
