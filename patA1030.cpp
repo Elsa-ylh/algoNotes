@@ -30,7 +30,7 @@ void Dijkstra(int s){   //"s" is where the path is from
     for(int i  = 0; i < n; i++){    //everytime find a shortest path from st to vertex i
         int u = -1, MIN = INF;  //d[u] is the lowest number of array d[], u is the index and MIN records d[u]
         for(int j = 0; j < n; j++){ //find a MIN from those vertexes that haven't been visited
-            if(!vis[j] && d[j] < MIN){
+            if(vis[j] == false && d[j] < MIN){
                 u = j;
                 MIN = d[j];
             }
@@ -38,7 +38,7 @@ void Dijkstra(int s){   //"s" is where the path is from
         if(u == -1) return;
         vis[u] = true;
         for(int v = 0; v < n; ++v){
-            if((!vis[u]) && (G[u][v] != INF)){  //update the shortest path and the lowest cost
+            if(vis[v] == false && G[u][v] != INF){  //update the shortest path and the lowest cost
                 if(d[u] + G[u][v] < d[v]){
                     d[v] = d[u] + G[u][v];
                     c[v] = c[u] + cost[u][v];
@@ -56,11 +56,11 @@ void Dijkstra(int s){   //"s" is where the path is from
 
 void DFS(int v){    //print path with the shortest distance and the lowest cost
     if(v == st){
-        printf("%d", v);
+        printf("%d ", v);
         return;
     }
     DFS(pre[v]);
-    printf("%d", v);
+    printf("%d ", v);
 }
 
 int main(){
@@ -77,6 +77,6 @@ int main(){
     }
     Dijkstra(st);
     DFS(ed);
-    printf("%d%d\n",d[ed], c[ed]);  //print the shortest distance and the lowest cost
+    printf("%d %d\n",d[ed], c[ed]);  //print the shortest distance and the lowest cost
     return 0;
 }
